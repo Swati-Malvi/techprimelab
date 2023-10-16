@@ -9,9 +9,12 @@ import {
 
 export const postData = (formData, navigate) => async (dispatch) => {
   try {
-    let response = await axios.post("http://localhost:5500/project/add", {
-      ...formData,
-    });
+    let response = await axios.post(
+      "https://techprimelab-backend.onrender.com/project/add",
+      {
+        ...formData,
+      }
+    );
     let data = await response.data;
     console.log(data, "STATUS");
     if (data.success === true) {
@@ -32,11 +35,11 @@ export const getAllData = (page, limit, text, sort) => async (dispatch) => {
 
     if (text !== "") {
       response = await axios.get(
-        `http://localhost:5500/project/${text}?sort=${sort}&page=${page}&limit=${limit}`
+        `https://techprimelab-backend.onrender.com/project/${text}?sort=${sort}&page=${page}&limit=${limit}`
       );
     } else {
       response = await axios.get(
-        `http://localhost:5500/project?sort=${sort}&page=${page}&limit=${limit}`
+        `https://techprimelab-backend.onrender.com/project?sort=${sort}&page=${page}&limit=${limit}`
       );
     }
 
@@ -51,7 +54,7 @@ export const getAllData = (page, limit, text, sort) => async (dispatch) => {
 export const updateData = (id, obj, page, limit) => async (dispatch) => {
   try {
     let response = await axios.patch(
-      `http://localhost:5500/project/edit/${id}`,
+      `https://techprimelab-backend.onrender.com/project/edit/${id}`,
       obj
     );
     let data = await response.data;
@@ -64,7 +67,9 @@ export const updateData = (id, obj, page, limit) => async (dispatch) => {
 
 export const getAllCounts = () => async (dispatch) => {
   try {
-    let response = await axios.get("http://localhost:5500/project/counts");
+    let response = await axios.get(
+      "https://techprimelab-backend.onrender.com/project/counts"
+    );
     let data = response.data;
     console.log(data);
     dispatch({
@@ -84,7 +89,9 @@ export const getAllCounts = () => async (dispatch) => {
 
 export const getChartsData = () => async (dispatch) => {
   try {
-    let response = await axios.get("http://localhost:5500/project/charts");
+    let response = await axios.get(
+      "https://techprimelab-backend.onrender.com/project/charts"
+    );
     let data = await response.data;
     console.log(data, "charts");
     dispatch({
