@@ -1,7 +1,5 @@
 # TechPrimeLab Assignment
 
-## Created By Swati Malvi
-
 ## Tech-Stack Used :
 
 - Frontend : ReactJS, Redux, Chakra-UI, CSS, Highchart.JS
