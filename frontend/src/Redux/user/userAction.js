@@ -3,7 +3,10 @@ import { LOGIN_FAILURE_DATA, LOGIN_SUCCESS_DATA } from "./userActionTypes";
 
 export const loginUser = (form, navigate) => async (dispatch) => {
   try {
-    let res = await axios.post("http://localhost:5500/user/login", form);
+    let res = await axios.post(
+      "https://techprimelab-backend.onrender.com//user/login",
+      form
+    );
     let userdata = await res.data;
     console.log(userdata);
     if (userdata.success) {
