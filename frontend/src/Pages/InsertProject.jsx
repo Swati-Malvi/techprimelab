@@ -64,6 +64,12 @@ const InsertProject = () => {
   };
 
   const handleSubmit = (e) => {
+    const formValues = Object.values(formData);
+    console.log(formValues);
+    if (formValues.some((val) => val === "")) {
+      alert("All fields are mandatory!");
+      return;
+    }
     e.preventDefault();
     let start = formData.start_date.split("-");
     let end = formData.end_date.split("-");
@@ -73,6 +79,8 @@ const InsertProject = () => {
     let eyear = +end[0];
     let emonth = +end[1];
     let edate = +end[2];
+
+    console.log(formData);
     if (syear > eyear) {
       setError("End year must be greater than start year");
     } else if (syear <= eyear) {
@@ -109,9 +117,9 @@ const InsertProject = () => {
           prop4={""}
           prop5={"5px solid #1b5cbf"}
           prop6={"20px"}
-          src1={"%PUBLIC_URL%/images/Dashboard.jpg"}
-          src2={"%PUBLIC_URL%/images/Project-list.jpg"}
-          src3={"%PUBLIC_URL%/images/create-project-active.jpg"}
+          src1={process.env.PUBLIC_URL + "/images/Dashboard.jpg"}
+          src2={process.env.PUBLIC_URL + "/images/Project-list.jpg"}
+          src3={process.env.PUBLIC_URL + "/images/create-project-active.jpg"}
         />
       ) : null}
       <Box>
@@ -340,7 +348,7 @@ const InsertProject = () => {
                   />
                   {formData.start_date === "" ? (
                     <Text color={"red"} fontSize={"14px"}>
-                      Start Date Require
+                      Start Date Required
                     </Text>
                   ) : null}
                 </Box>
@@ -363,7 +371,7 @@ const InsertProject = () => {
                   />
                   {formData.end_date === "" ? (
                     <Text color={"red"} fontSize={"14px"}>
-                      End Date Require
+                      End Date Required
                     </Text>
                   ) : null}
                   {error !== "" ? (

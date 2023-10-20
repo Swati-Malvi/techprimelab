@@ -43,6 +43,10 @@ const Login = () => {
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
+    if (email === "" || password === "") {
+      alert("Email and Password fields are mandatory!");
+      return;
+    }
     const obj = {
       email: email,
       password: password,
@@ -147,11 +151,11 @@ const Login = () => {
             border="none"
             _focus={{ outline: "0 !important", border: "none" }}
           />
-          {email === "" ? (
+          {/* {email === "" ? (
             <Text className="error-label" fontSize={"15px"}>
               Email is required
             </Text>
-          ) : null}
+          ) : null} */}
           <br />
           <label>Password</label>
           <div className="password-div">
@@ -185,11 +189,11 @@ const Login = () => {
               marginBottom: "5px",
             }}
           >
-            {password === "" ? (
+            {/* {password === "" ? (
               <Text className="error-label" fontSize={"15px"}>
                 Password is required
               </Text>
-            ) : null}
+            ) : null} */}
             <span style={{ color: "#4871f7", fontSize: "14px" }}>
               Forgot password?
             </span>
